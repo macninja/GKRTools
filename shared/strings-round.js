@@ -18,7 +18,7 @@ export const ROUND_STRINGS = {
     "hit.flank": "Flank −1",
     "hit.full": "Fuld dækning",
     "hit.result": "Rul {n}+",
-    "hit.blocked": "Ingen direkte ild – brug missil + spotter",
+    "hit.blocked": "Ingen direkte ild – missil + spotter, eller orbital",
     "hit.crit": "Dobbelt 6 = crit (ingen armor). Dobbelt 1 = fail.",
     "phase.deploy.name": "Deploy",
     "phase.deploy.hint":
@@ -34,10 +34,10 @@ export const ROUND_STRINGS = {
       "Glory Hound først. Bevægelse står på kortet. Ikke gennem fjender eller bygninger. Spring over hvis enheden ikke er ude.",
     "phase.move-recon.name": "Bevæg Recon",
     "phase.move-recon.hint":
-      "Glory Hound først. Recon kan flyve gennem optagede hexes og bygninger, men ikke ende der.",
+      "Glory Hound først. Recon kan flyve gennem optagede hexes og bygninger, men ikke ende der. Flyvning giver ikke LOS over bygninger. Mercs bevæger sig efter Recon.",
     "phase.combat.name": "Kamp",
     "phase.combat.hint":
-      "1. Læg våben facedown + support faceup. Kun 1 af hvert unikt våben. 2. Vend samtidig, betal energi. 3. Resolv højeste speed først. Ubrugte våben tilbage i hånden (energi tilbagebetales ikke).",
+      "1. Læg våben facedown + support faceup. Kun 1 af hvert unikt våben. 2. Vend samtidig, betal energi. 3. Resolv højeste speed først. Orbital: ethvert mål, ingen LOS. Support der dør før den skyder, skyder ikke. Ubrugte våben tilbage i hånden (energi tilbagebetales ikke).",
     "phase.tag.name": "Tagging",
     "phase.tag.hint":
       "Glory Hound først. Alle units kan tagge 1 tilstødende bygningsside (facing ligegyldigt). Over-tag er lovligt. 1 sponsor pr. forskellig bygning. Max 5 sponsorer. 4. tag på en bygning = demolér med det samme (sejr ved 4 demolitions).",
@@ -72,7 +72,7 @@ export const ROUND_STRINGS = {
     "hit.flank": "Flank −1",
     "hit.full": "Full cover",
     "hit.result": "Roll {n}+",
-    "hit.blocked": "No direct fire – use a missile + spotter",
+    "hit.blocked": "No direct fire – missile + spotter, or orbital",
     "hit.crit": "Double 6 = crit (no armor). Double 1 = fail.",
     "phase.deploy.name": "Deploy",
     "phase.deploy.hint":
@@ -88,10 +88,10 @@ export const ROUND_STRINGS = {
       "Glory Hound first. Move value is on the card. Not through enemies or buildings. Skip if the unit is not deployed.",
     "phase.move-recon.name": "Move Recon",
     "phase.move-recon.hint":
-      "Glory Hound first. Recon may fly through occupied hexes and buildings, but cannot end there.",
+      "Glory Hound first. Recon may fly through occupied hexes and buildings, but cannot end there. Flying does not grant LOS over buildings. Mercs move after Recon.",
     "phase.combat.name": "Combat",
     "phase.combat.hint":
-      "1. Place weapons facedown + supports faceup. Only 1 of each unique weapon. 2. Flip together, pay energy. 3. Resolve highest speed first. Unused weapons return to hand (energy is not refunded).",
+      "1. Place weapons facedown + supports faceup. Only 1 of each unique weapon. 2. Flip together, pay energy. 3. Resolve highest speed first. Orbital: any target, no LOS. A support destroyed before it fires does not shoot. Unused weapons return to hand (energy is not refunded).",
     "phase.tag.name": "Tagging",
     "phase.tag.hint":
       "Glory Hound first. Every unit may tag 1 adjacent building face (facing does not matter). Over-tagging is legal. 1 sponsor per different building. Max 5 sponsors. 4th tag on a building = demolish immediately (win at 4 demolitions).",

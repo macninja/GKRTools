@@ -115,15 +115,16 @@ export const SETUP_STRINGS = {
 <li>Dobbelt 1 = fail: HH-våben i damage-bunken / support mister 1 HP. Bonus redder ikke; Fake Shot-reroll kan</li>
 <li>Ubrugte erklærede våben tilbage i hånden – energien kommer ikke tilbage</li>
 </ul>
-<p>Orbital: intet angrebsrul, forsvarer ruller stadig armor. Reaction må ikke spilles mod orbital.</p>`,
+<p>Orbital: intet angrebsrul, <strong>ingen LOS/spotter</strong> – ethvert mål på brættet. Reaction må ikke spilles mod orbital.</p>
+<p>Support der dør før den skyder, aktiverer ikke sit kort.</p>`,
     "rules.cover.title": "Dækning, spot, alley, flank",
     "rules.cover.html": `<ul>
 <li>Kun bygninger giver dækning. Units giver aldrig dækning. Units blokerer ikke LOS</li>
 <li><strong>Fuld dækning</strong> – alle korteste veje gennem bygning: ingen direkte ild</li>
 <li><strong>Delvis dækning</strong> – flere korteste veje, og mindst én gennem bygning ved målet: <strong>+1</strong> to-hit</li>
-<li><strong>Spot</strong> – missil uden LOS kræver support med målet i LOS-range. Så er det indirect = ingen dækning. HH må også skyde indirect selv med LOS. Kun til HH-missiler – HH spotter ikke for support. Support kan aldrig skyde uden LOS</li>
-<li><strong>Alley / crack shot</strong> – angriber adjacent til to side-om-side bygninger: <strong>+2</strong> to-hit. Angriber har fuld dækning tilbage. Hit = +1 achievement</li>
-<li><strong>Flank</strong> – de 3 bagside-hexes på en HH: <strong>−1</strong> to-hit. Support kan ikke flankes. Hit = +1 achievement</li>
+<li><strong>Spot</strong> – missil uden LOS kræver support med målet i LOS-range. Så er det indirect = ingen dækning. Har HH LOS og ingen spotter, er det et almindeligt direkte skud (dækning tæller). Kun til HH-missiler. Missiler skal stadig være i firing arc. Support kan aldrig skyde uden LOS. Recon får <em>ikke</em> LOS over bygninger</li>
+<li><strong>Alley / crack shot</strong> – angriber adjacent til to side-om-side bygninger: <strong>+2</strong> to-hit. Range tælles fra en af bygningerne (ikke første tomme hex på den anden side). Support må alley. Alley giver ikke almindelig LOS – I kan ikke spotte gennem den. Angriber har fuld dækning tilbage. Hit = +1 achievement</li>
+<li><strong>Flank</strong> – kun de 3 bagside-hexes (rødt i regelbogen). De grå side-hexes er hverken flank eller firing arc. Support kan ikke flankes. Hit = +1 achievement</li>
 </ul>`,
     "rules.armor.title": "Armor og skade",
     "rules.armor.html": `<p>Forsvarer ruller <strong>1 hvid terning pr. damage</strong> på våbnet. Hver terning ≥ armor = blokeret. Resten går igennem.</p>
@@ -132,7 +133,7 @@ export const SETUP_STRINGS = {
     "rules.tag.title": "Tagging",
     "rules.tag.html": `<ul>
 <li>Glory Hound tagger alle sine units først, derefter med uret</li>
-<li>Alle units kan tagge 1 tilstødende bygningsside, uanset facing</li>
+<li>Alle units kan tagge 1 <strong>umiddelbart tilstødende flade</strong> – I vælger ikke en vilkårlig side af bygningen. Facing ligegyldigt</li>
 <li>Over-tag: erstat et fjendtligt tag</li>
 <li>1 sponsor pr. <em>forskellig</em> bygning, ikke pr. tag. Max 5 sponsorer – smid overskud inden fasen slutter</li>
 <li>4. tag på en bygning: fjern alle tags, tag cap og flat af, sæt jeres tag i basen, +1 achievement. Bygningen giver ikke længere dækning, men blokerer stadig bevægelse</li>
@@ -144,12 +145,12 @@ export const SETUP_STRINGS = {
 <li>Træk eller smid til 6 faction-kort. Tomt dæk: bland discard. Damage-bunken bliver liggende</li>
 <li>Flest holo-tags denne runde = ny Glory Hound</li>
 <li>Lighed: nærmeste tiede spiller <strong>med uret</strong>. Nuværende GH beholder den ikke ved lighed</li>
-<li>Stjæl tokenet fra en anden = +1 achievement</li>
+<li>Stjæl tokenet fra en anden = +1 achievement. At <em>beholde</em> GH tæller ikke</li>
 </ul>`,
     "rules.win.title": "Sejr og achievements",
     "rules.win.html": `<p><strong>Frag:</strong> 25 kort i damage-bunken. Sidste HH vinder med det samme. Flere tilbage: fjern den ødelagte bot, spil kampfasen færdig, scor = uskadte kort + felter på achievements. Lighed: længst på achievements, derefter flest tags på stående bygninger.</p>
 <p><strong>Tag:</strong> 4. demolition vinder med det samme.</p>
-<p>Achievements (samme må gerne gentages): flyt pilot-token 1 felt til højre. Upgrade-trigger = flip flisen, den kan ikke mistes.</p>`,
+<p>Achievements (samme må gerne gentages; flere triggers samme gang = flere felter): flyt pilot-token 1 felt til højre. Upgrade-trigger = flip flisen, den kan ikke mistes. Pilot-evner gælder alle jeres units, medmindre kortet siger andet.</p>`,
     "rules.gotchas.title": "Ting man glemmer",
     "rules.gotchas.html": `<ul>
 <li>Kamp-rækkefølge er <strong>våben-speed</strong>, ikke Glory Hound</li>
@@ -162,7 +163,15 @@ export const SETUP_STRINGS = {
 <li>Kritisk energi skader jer selv – både i bevægelse og kamp</li>
 <li>Damage-bunken er jeres HP. Kig gerne, omarrangér ikke</li>
 <li>Reaction kun mod angreb på HH, aldrig mod orbital</li>
+<li>Sponsorer: discard når I bruger dem – kun denne runde. Deploy/move på jeres tur; “efter våben erklæret” i den rækkefølge de blev lagt, ellers fra GH</li>
+<li>Missil + spotter fjerner dækning. Missil uden spotter men med LOS = almindelig direkte ild</li>
 </ul>`,
+    "rules.ks.title": "KS: Mercs, terrain, Hapsi",
+    "rules.ks.html": `<p><strong>Mercs</strong> – i Deploy i stedet for egen support. Betal stadig energi + discard 1 sponsor. Kun 1 Merc ad gangen (byt = fjern den gamle). Bevæger sig efter Recon. Samme move/kamp/tag-regler. Død = tilbage i puljen. Tæller med til “3 support på brættet”.</p>
+<p><strong>Orbital Shock</strong> – må med i de 25. Anden speed end Orbital Strike, så begge kan affyres samme fase. Går i damage-bunken. Intet angrebsrul. 1–2 tilstødende units fra samme faction; I fordeler skaden før armor.</p>
+<p><strong>Hapsi-bygninger</strong> – demolér = +1 ekstra sponsor.</p>
+<p><strong>Terrain:</strong> Rubble = 2 bevægelse for at gå ind, reroll 1 armor. Nuke crater = 2 for at gå ud, delvis dækning. UXM = HH høster +2 energi, fjern flisen. Sinkhole = kan ikke stå/gå igennem (Recon må flyve over). Ikke ved siden af anden terrain, ikke adjacent til mere end 1 bygning, ikke ved HH-start.</p>
+<p><strong>Sentry guns</strong> tæller som tags (demolition + over-tag). Big Little Buddy tæller ikke som jeres Deploy.</p>`,
     "rules.alt.title": "Fallout, 2v2, solo",
     "rules.alt.html": `<p><strong>Fallout-siden:</strong> support kun i zone 1. Zone 3: +1 skade fra angreb, 1 skade efter Reset. Zone 4: +2 / 2 skade. Bagsiden af achievements: vælg upgrade-sti sammen med pilot.</p>
 <p><strong>2v2 fast:</strong> allierede diagonalt, skift hold. Ingen ild på allierede; repair er ok. Ingen deling af kort/energi. Holdet vinder ved 1 frag eller 6 demolitions (4 tags fra holdet tæller).</p>
@@ -285,15 +294,16 @@ export const SETUP_STRINGS = {
 <li>Double 1 = fail: HH weapon to the damage pile / support loses 1 HP. A bonus does not save you; a Fake Shot reroll can</li>
 <li>Unused declared weapons return to hand – energy is not refunded</li>
 </ul>
-<p>Orbital: no attack roll, defender still rolls armor. Reactions cannot be played against an orbital.</p>`,
+<p>Orbital: no attack roll, <strong>no LOS/spotter</strong> – any unit on the board. Reactions cannot be played against an orbital.</p>
+<p>A support destroyed before it fires does not activate its card.</p>`,
     "rules.cover.title": "Cover, spotting, alley, flank",
     "rules.cover.html": `<ul>
 <li>Only buildings provide cover. Units never provide cover. Units do not block LOS</li>
 <li><strong>Full cover</strong> – every shortest path through a building: no direct fire</li>
 <li><strong>Partial cover</strong> – more than one shortest path, and at least one through a building adjacent to the target: <strong>+1</strong> to-hit</li>
-<li><strong>Spotting</strong> – a missile with no LOS needs a support that has the target in LOS range. That makes it indirect = no cover. A HH may also fire indirect even with LOS. Spotting is for HH missiles only – a HH does not spot for supports. Supports can never fire without LOS</li>
-<li><strong>Alley / crack shot</strong> – attacker adjacent to two side-by-side buildings: <strong>+2</strong> to-hit. The attacker has full cover back. A hit = +1 achievement</li>
-<li><strong>Flank</strong> – the 3 rear hexes of a HH: <strong>−1</strong> to-hit. Supports cannot be flanked. A hit = +1 achievement</li>
+<li><strong>Spotting</strong> – a missile with no LOS needs a support that has the target in LOS range. That makes it indirect = no cover. If the HH has LOS and no spotter, it is a normal direct shot (cover counts). HH missiles only. Missiles still need a firing arc. Supports can never fire without LOS. Recon does <em>not</em> get LOS over buildings</li>
+<li><strong>Alley / crack shot</strong> – attacker adjacent to two side-by-side buildings: <strong>+2</strong> to-hit. Range starts on one of the buildings (not the first empty hex beyond). Supports may alley. An alley is not normal LOS – you cannot spot through it. The attacker has full cover back. A hit = +1 achievement</li>
+<li><strong>Flank</strong> – only the 3 rear hexes (red in the rulebook). The grey side hexes are neither flank nor firing arc. Supports cannot be flanked. A hit = +1 achievement</li>
 </ul>`,
     "rules.armor.title": "Armor and damage",
     "rules.armor.html": `<p>The defender rolls <strong>1 white die per damage</strong> on the weapon. Each die ≥ armor = blocked. The rest goes through.</p>
@@ -302,7 +312,7 @@ export const SETUP_STRINGS = {
     "rules.tag.title": "Tagging",
     "rules.tag.html": `<ul>
 <li>The Glory Hound tags with all their units first, then clockwise</li>
-<li>Every unit may tag 1 adjacent building face, regardless of facing</li>
+<li>Every unit may tag 1 <strong>immediately adjacent face</strong> – you do not pick an arbitrary side of the building. Facing does not matter</li>
 <li>Over-tag: replace an opponent's tag</li>
 <li>1 sponsor per <em>different</em> building, not per tag. Max 5 sponsors – discard extras before the phase ends</li>
 <li>4th tag on a building: remove all tags, pull the cap and flat, place your tag in the base, +1 achievement. The building no longer provides cover, but still blocks movement</li>
@@ -314,12 +324,12 @@ export const SETUP_STRINGS = {
 <li>Draw or discard to 6 faction cards. Empty deck: shuffle discard. The damage pile stays put</li>
 <li>Most holo-tags this round = new Glory Hound</li>
 <li>Tie: closest tied player <strong>clockwise</strong>. The current GH does not keep it on a tie</li>
-<li>Steal the token from someone else = +1 achievement</li>
+<li>Steal the token from someone else = +1 achievement. <em>Keeping</em> GH does not count</li>
 </ul>`,
     "rules.win.title": "Winning and achievements",
     "rules.win.html": `<p><strong>Frag:</strong> 25 cards in the damage pile. The last HH wins immediately. If others remain: remove the wreck, finish the combat phase, score = undamaged cards + spaces on achievements. Tie: furthest on achievements, then most tags on standing buildings.</p>
 <p><strong>Tag:</strong> the 4th demolition wins immediately.</p>
-<p>Achievements (the same one may repeat): move the pilot token 1 space right. An upgrade trigger flips the tile; it cannot be lost.</p>`,
+<p>Achievements (the same one may repeat; multiple triggers at once = multiple spaces): move the pilot token 1 space right. An upgrade trigger flips the tile; it cannot be lost. Pilot abilities apply to all your units unless the card says otherwise.</p>`,
     "rules.gotchas.title": "Things people forget",
     "rules.gotchas.html": `<ul>
 <li>Combat order is <strong>weapon speed</strong>, not Glory Hound</li>
@@ -332,7 +342,15 @@ export const SETUP_STRINGS = {
 <li>Critical energy damages you – in both movement and combat</li>
 <li>The damage pile is your HP. You may look; you may not rearrange</li>
 <li>Reactions only against attacks on a HH, never against an orbital</li>
+<li>Sponsors: discard when you use them – current round only. Deploy/move on your turn; “after weapons declared” in the order they were played, otherwise from the GH</li>
+<li>Missile + spotter removes cover. Missile with LOS but no spotter = normal direct fire</li>
 </ul>`,
+    "rules.ks.title": "KS: Mercs, terrain, Hapsi",
+    "rules.ks.html": `<p><strong>Mercs</strong> – in Deploy instead of your own support. Still pay energy + discard 1 sponsor. Only 1 Merc at a time (swap = remove the old one). They move after Recon. Same move/combat/tag rules. Destroyed = back to the pool. They count toward “3 supports on the board”.</p>
+<p><strong>Orbital Shock</strong> – may be one of the 25. Different speed from Orbital Strike, so both can fire in the same phase. Goes to the damage pile. No attack roll. 1–2 adjacent units of one faction; you split the damage before armor.</p>
+<p><strong>Hapsi buildings</strong> – demolish = +1 extra sponsor.</p>
+<p><strong>Terrain:</strong> Rubble = 2 movement to enter, reroll 1 armor. Nuke crater = 2 to exit, partial cover. UXM = HH harvests +2 energy, remove the tile. Sinkhole = cannot enter/stop (Recon may fly over). Not next to other terrain, not adjacent to more than 1 building, not next to an HH start.</p>
+<p><strong>Sentry guns</strong> count as tags (demolition + over-tag). Big Little Buddy does not count as your Deploy.</p>`,
     "rules.alt.title": "Fallout, 2v2, solo",
     "rules.alt.html": `<p><strong>Fallout side:</strong> supports only in zone 1. Zone 3: +1 damage from attacks, 1 damage after Reset. Zone 4: +2 / 2 damage. Back of the achievements board: pick an upgrade path with your pilot.</p>
 <p><strong>Fixed 2v2:</strong> allies sit diagonally, turns alternate teams. No fire on allies; repair is fine. No sharing cards/energy. The team wins on 1 frag or 6 demolitions (4 tags from the team count).</p>
