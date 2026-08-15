@@ -1,0 +1,10 @@
+---
+description: Commit also means push unless told otherwise
+alwaysApply: true
+---
+
+# Commit + push
+
+When the user asks to commit, also push to the tracked remote after a successful commit.
+
+Do not push only if they explicitly say not to (e.g. "commit, men ikke push").
