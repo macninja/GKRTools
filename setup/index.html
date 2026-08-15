@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" data-i18n="meta.description" content="Setup-guide og regelreference til GKR: Heavy Hitters.">
+  <title data-i18n="meta.title">Setup Wizard – GKR Heavy Hitters</title>
+  <link rel="icon" href="../shared/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;1,400&family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/gkr.css">
+</head>
+<body>
+  <div class="atmosphere"></div>
+  <nav class="hub-nav">
+    <a class="hub-back" href="../index.html" data-i18n="hubBack">← GKRTools</a>
+  </nav>
+  <header class="brand">
+    <div class="brand-mark" aria-hidden="true"></div>
+    <p class="brand-eyebrow">Giant Killer Robots</p>
+    <h1>Setup Wizard</h1>
+    <p class="tagline" data-i18n="tagline">Fra kassen til første runde – uden at bladre i regelbogen.</p>
+    <div class="brand-rule"></div>
+  </header>
+  <main>
+    <div class="progress-bar" aria-hidden="true">
+      <span class="dot current"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <section class="step panel active" data-step="welcome">
+      <h2 data-i18n="welcome.title">Velkommen</h2>
+      <p class="panel-lede" data-i18n="welcome.lede">Denne guide hjælper jer med battlefield, faction-dæk og genopfrisker de regler I faktisk glemmer midt i kampen.</p>
+      <div class="action-row">
+        <button type="button" class="primary" onclick="next()" data-i18n="welcome.start">Start setup →</button>
+      </div>
+    </section>
+
+    <section class="step panel" data-step="players">
+      <h2 data-i18n="players.title">Antal spillere</h2>
+      <p class="panel-lede" data-i18n="players.lede">Hvor mange sidder ved bordet i aften?</p>
+      <div class="player-grid">
+        <button type="button" class="tile" data-n="2" onclick="selectPlayers(2)">2</button>
+        <button type="button" class="tile" data-n="3" onclick="selectPlayers(3)">3</button>
+        <button type="button" class="tile" data-n="4" onclick="selectPlayers(4)">4</button>
+      </div>
+      <div id="player-info" class="suggestion hidden"></div>
+      <div class="action-row">
+        <button type="button" class="ghost" onclick="prev()" data-i18n="players.back">← Tilbage</button>
+        <button type="button" class="primary" id="next-from-players" onclick="next()" disabled data-i18n="players.next">Videre →</button>
+      </div>
+    </section>
+
+    <section class="step panel" data-step="map">
+      <h2 data-i18n="map.title">Battlefield</h2>
+      <p class="panel-lede" data-i18n="map.lede">Vælg et officielt kort – koordinaterne står på brættet.</p>
+      <div id="map-list" class="map-list"></div>
+      <div id="map-detail" class="hidden">
+        <h3 data-i18n="map.buildings">Bygninger</h3>
+        <div id="map-buildings" class="coord-row"></div>
+        <h3 data-i18n="map.starts">HH start</h3>
+        <div id="map-starts" class="coord-row"></div>
+      </div>
+      <div class="action-row">
+        <button type="button" class="ghost" onclick="prev()" data-i18n="map.back">← Tilbage</button>
+        <button type="button" class="primary" id="next-from-map" onclick="next()" disabled data-i18n="map.next">Videre →</button>
+      </div>
+    </section>
+
+    <section class="step panel" data-step="table">
+      <h2 data-i18n="table.title">Bord-setup</h2>
+      <p class="panel-lede"><span data-i18n="table.lede">Klik på hvert punkt når det er klart.</span> <span id="table-counter">0 / 8</span></p>
+      <ul class="checklist" id="table-checklist">
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="table.checklist.1"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="table.checklist.2"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="table.checklist.3"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="table.checklist.4"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="table.checklist.5"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="table.checklist.6"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="table.checklist.7"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="table.checklist.8"></span></li>
+      </ul>
+      <div class="action-row">
+        <button type="button" class="ghost" onclick="prev()" data-i18n="table.back">← Tilbage</button>
+        <button type="button" class="primary" onclick="next()" data-i18n="table.next">Videre →</button>
+      </div>
+    </section>
+
+    <section class="step panel" data-step="deck">
+      <h2 data-i18n="deck.title">Byg 25-korts dæk</h2>
+      <p class="panel-lede" data-i18n="deck.lede">Bygges hemmeligt. Support-kort og sponsorer tæller ikke med.</p>
+      <div class="deck-row"><span data-i18n="deck.primary">1 primær-sæt</span><strong>5</strong></div>
+      <div class="deck-row"><span data-i18n="deck.secondary">2 sekundær-sæt</span><strong>8</strong></div>
+      <div class="deck-row">
+        <span data-i18n="deck.deploy">Deploy-kort (max 5)</span>
+        <div class="stepper">
+          <button type="button" onclick="nudgeDeploy(-1)" aria-label="−">−</button>
+          <output id="deploy-count">5</output>
+          <button type="button" onclick="nudgeDeploy(1)" aria-label="+">+</button>
+        </div>
+      </div>
+      <div class="deck-row"><span data-i18n="deck.utility">Orbital / maneuver / reaction</span><strong id="utility-count">7</strong></div>
+      <div class="deck-total"><span data-i18n="deck.total">I alt</span> <output>25</output></div>
+      <p class="suggestion" data-i18n="deck.tip"></p>
+      <ul class="checklist" id="deck-checklist">
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="deck.checklist.1"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="deck.checklist.2"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="deck.checklist.3"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="deck.checklist.4"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="deck.checklist.5"></span></li>
+        <li onclick="toggleCheck(this)"><span class="check"></span><span class="label" data-i18n="deck.checklist.6"></span></li>
+      </ul>
+      <div class="action-row">
+        <button type="button" class="ghost" onclick="prev()" data-i18n="deck.back">← Tilbage</button>
+        <button type="button" class="primary" onclick="next()" data-i18n="deck.next">Vis regler-reference →</button>
+      </div>
+    </section>
+
+    <section class="step panel" data-step="rules" id="rules">
+      <h2 data-i18n="rules.title">Hurtig regelreference</h2>
+      <p class="panel-lede" data-i18n="rules.lede">Klap sektionerne ud efter behov under spillet.</p>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.rounds.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.rounds.html"></div>
+      </div>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.energy.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.energy.html"></div>
+      </div>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.deploy.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.deploy.html"></div>
+      </div>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.move.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.move.html"></div>
+      </div>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.combat.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.combat.html"></div>
+      </div>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.cover.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.cover.html"></div>
+      </div>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.armor.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.armor.html"></div>
+      </div>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.tag.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.tag.html"></div>
+      </div>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.reset.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.reset.html"></div>
+      </div>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.win.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.win.html"></div>
+      </div>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.gotchas.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.gotchas.html"></div>
+      </div>
+      <div class="rules-section">
+        <div class="rules-header" onclick="toggleRule(this)"><span data-i18n="rules.alt.title"></span><span class="arrow">▼</span></div>
+        <div class="rules-content" data-i18n-html="rules.alt.html"></div>
+      </div>
+      <div class="action-row">
+        <button type="button" class="ghost" onclick="prev()" data-i18n="rules.back">← Tilbage</button>
+        <button type="button" class="ghost" onclick="resetWizard()" data-i18n="rules.reset">↺ Start forfra</button>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p class="footer-note" data-i18n="footer">Fan tool · Ikke tilknyttet Weta Workshop / Cryptozoic</p>
+  </footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

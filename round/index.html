@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" data-i18n="meta.description" content="Fasetracker og to-hit til GKR: Heavy Hitters.">
+  <title data-i18n="meta.title">Runde-tracker – GKR Heavy Hitters</title>
+  <link rel="icon" href="../shared/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;1,400&family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/gkr.css">
+</head>
+<body>
+  <div class="atmosphere"></div>
+  <nav class="hub-nav">
+    <a class="hub-back" href="../index.html" data-i18n="hubBack">← GKRTools</a>
+  </nav>
+  <header class="brand">
+    <div class="brand-mark" aria-hidden="true"></div>
+    <p class="brand-eyebrow">Giant Killer Robots</p>
+    <h1>Round Tracker</h1>
+    <p class="tagline" data-i18n="tagline">Hold runden kørende – uden at bladre i regelbogen.</p>
+    <div class="brand-rule"></div>
+  </header>
+  <main>
+    <section class="panel">
+      <p class="phase-kicker" id="round-label">Runde 1</p>
+      <div class="phase-pills" id="phase-pills"></div>
+      <h2 class="phase-title" id="phase-name">Deploy</h2>
+      <p class="hint" id="phase-hint"></p>
+      <div id="to-hit" class="to-hit hidden">
+        <h3 data-i18n="hit.title">To-hit</h3>
+        <div class="toggle-grid">
+          <button type="button" class="toggle" data-target="hh" aria-pressed="true" data-i18n="hit.hh">Heavy Hitter (5+)</button>
+          <button type="button" class="toggle" data-target="su" aria-pressed="false" data-i18n="hit.su">Support (7+)</button>
+        </div>
+        <div class="toggle-grid">
+          <button type="button" class="toggle" data-mod="partialCover" aria-pressed="false" data-i18n="hit.cover">Delvis dækning +1</button>
+          <button type="button" class="toggle" data-mod="alley" aria-pressed="false" data-i18n="hit.alley">Alley shot +2</button>
+          <button type="button" class="toggle" data-mod="flank" aria-pressed="false" data-i18n="hit.flank">Flank −1</button>
+          <button type="button" class="toggle" data-mod="fullCover" aria-pressed="false" data-i18n="hit.full">Fuld dækning</button>
+        </div>
+        <output id="hit-result">5+</output>
+        <p class="hint" data-i18n="hit.crit">Dobbelt 6 = crit (ingen armor). Dobbelt 1 = fail.</p>
+      </div>
+      <div class="action-row">
+        <button type="button" class="ghost" id="prev-phase" data-i18n="action.prev">← Forrige</button>
+        <button type="button" class="primary" id="next-phase" data-i18n="action.next">Næste fase →</button>
+      </div>
+      <div class="action-row">
+        <button type="button" class="ghost" id="reset-match" data-i18n="action.reset">↺ Ny kamp</button>
+        <a class="ghost" href="../setup/index.html#rules" data-i18n="rules.link">Regelreference →</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p class="footer-note" data-i18n="footer">Fan tool · Ikke tilknyttet Weta Workshop / Cryptozoic</p>
+  </footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
