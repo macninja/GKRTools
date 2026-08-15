@@ -31,7 +31,6 @@
       <span class="dot"></span>
       <span class="dot"></span>
       <span class="dot"></span>
-      <span class="dot"></span>
     </div>
 
     <section class="step panel active" data-step="welcome">
@@ -42,25 +41,30 @@
       </div>
     </section>
 
-    <section class="step panel" data-step="players">
-      <h2 data-i18n="players.title">Antal spillere</h2>
-      <p class="panel-lede" data-i18n="players.lede">Hvor mange sidder ved bordet i aften?</p>
-      <div class="player-grid">
-        <button type="button" class="tile" data-n="2" onclick="selectPlayers(2)">2</button>
-        <button type="button" class="tile" data-n="3" onclick="selectPlayers(3)">3</button>
-        <button type="button" class="tile" data-n="4" onclick="selectPlayers(4)">4</button>
+    <section class="step panel" data-step="tree">
+      <h2 data-i18n="tree.title">Vælg jeres vej</h2>
+      <p class="panel-lede" data-i18n="tree.lede">Tryk jer ned gennem træet – spillere, variant, battlefield.</p>
+      <div class="tree" id="setup-tree">
+        <div class="tree-node tree-root" data-i18n="tree.root">Spillere</div>
+        <div class="tree-join" aria-hidden="true"></div>
+        <div class="tree-row" id="tree-players">
+          <button type="button" class="tree-node" data-n="2" onclick="selectPlayers(2)">2</button>
+          <button type="button" class="tree-node" data-n="3" onclick="selectPlayers(3)">3</button>
+          <button type="button" class="tree-node" data-n="4" onclick="selectPlayers(4)">4</button>
+        </div>
+        <div id="tree-mode-wrap" class="hidden">
+          <div class="tree-join" aria-hidden="true"></div>
+          <div class="tree-row" id="tree-mode">
+            <button type="button" class="tree-node" data-mode="ffa" onclick="selectMode('ffa')" data-i18n="tree.mode.ffa">FFA</button>
+            <button type="button" class="tree-node" data-mode="tvt" onclick="selectMode('tvt')" data-i18n="tree.mode.tvt">2v2</button>
+          </div>
+        </div>
+        <div id="tree-maps-wrap" class="hidden">
+          <div class="tree-join" aria-hidden="true"></div>
+          <div class="tree-col" id="tree-maps"></div>
+        </div>
       </div>
       <div id="player-info" class="suggestion hidden"></div>
-      <div class="action-row">
-        <button type="button" class="ghost" onclick="prev()" data-i18n="players.back">← Tilbage</button>
-        <button type="button" class="primary" id="next-from-players" onclick="next()" disabled data-i18n="players.next">Videre →</button>
-      </div>
-    </section>
-
-    <section class="step panel" data-step="map">
-      <h2 data-i18n="map.title">Battlefield</h2>
-      <p class="panel-lede" data-i18n="map.lede">Vælg et officielt kort – koordinaterne står på brættet.</p>
-      <div id="map-list" class="map-list"></div>
       <div id="map-detail" class="hidden">
         <h3 data-i18n="map.buildings">Bygninger</h3>
         <div id="map-buildings" class="coord-row"></div>
@@ -68,8 +72,8 @@
         <div id="map-starts" class="coord-row"></div>
       </div>
       <div class="action-row">
-        <button type="button" class="ghost" onclick="prev()" data-i18n="map.back">← Tilbage</button>
-        <button type="button" class="primary" id="next-from-map" onclick="next()" disabled data-i18n="map.next">Videre →</button>
+        <button type="button" class="ghost" onclick="prev()" data-i18n="tree.back">← Tilbage</button>
+        <button type="button" class="primary" id="next-from-tree" onclick="next()" disabled data-i18n="tree.next">Videre →</button>
       </div>
     </section>
 

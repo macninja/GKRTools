@@ -4,9 +4,10 @@ import { MAPS, mapsForPlayers } from "./maps.js";
 
 initI18n("setup");
 
-const STEPS = ["welcome", "players", "map", "table", "deck", "rules"];
+const STEPS = ["welcome", "tree", "table", "deck", "rules"];
 let currentStep = 0;
 let playerCount = 0;
+let playMode = "ffa";
 let selectedMap = null;
 let deploy = 5;
 
@@ -38,43 +39,65 @@ function prev() {
 function selectPlayers(n) {
   playerCount = n;
   selectedMap = null;
-  document.querySelectorAll(".tile[data-n]").forEach((btn) => {
+  playMode = "ffa";
+  document.querySelectorAll("#tree-players .tree-node").forEach((btn) => {
     btn.classList.toggle("selected", parseInt(btn.dataset.n, 10) === n);
   });
-  const info = document.getElementById("player-info");
-  info.innerHTML = t(`players.info.${n}`);
-  info.classList.remove("hidden");
-  document.getElementById("next-from-players").disabled = false;
-  document.getElementById("next-from-map").disabled = true;
-  renderMaps();
+  document.getElementById("next-from-tree").disabled = true;
+  renderTree();
 }
 
-function renderMaps() {
-  const list = document.getElementById("map-list");
-  list.innerHTML = "";
-  if (!playerCount) return;
+function selectMode(mode) {
+  playMode = mode;
+  renderTree();
+}
 
+function selectMap(id) {
+  selectedMap = id;
+  document.getElementById("next-from-tree").disabled = false;
+  renderTree();
+}
+
+function renderTree() {
+  const modeWrap = document.getElementById("tree-mode-wrap");
+  const mapsWrap = document.getElementById("tree-maps-wrap");
+  const info = document.getElementById("player-info");
+
+  if (!playerCount) {
+    modeWrap.classList.add("hidden");
+    mapsWrap.classList.add("hidden");
+    info.classList.add("hidden");
+    updateMapDetail();
+    return;
+  }
+
+  modeWrap.classList.toggle("hidden", playerCount !== 4);
+  document.querySelectorAll("#tree-mode .tree-node").forEach((btn) => {
+    btn.classList.toggle("selected", btn.dataset.mode === playMode);
+  });
+
+  mapsWrap.classList.remove("hidden");
+  const list = document.getElementById("tree-maps");
+  list.innerHTML = "";
   for (const map of mapsForPlayers(playerCount)) {
     list.appendChild(mapButton(map.id, t(`map.${map.id}`), `${map.buildings.length} · ${map.starts.join(" ")}`));
   }
   list.appendChild(mapButton("custom", t("map.custom"), t("map.custom.meta")));
+
+  const infoKey = playerCount === 4 && playMode === "tvt" ? "tree.info.4tvt" : `players.info.${playerCount}`;
+  info.innerHTML = t(infoKey);
+  info.classList.remove("hidden");
   updateMapDetail();
 }
 
 function mapButton(id, title, meta) {
   const btn = document.createElement("button");
   btn.type = "button";
-  btn.className = "map-card";
+  btn.className = "tree-node tree-leaf";
   if (selectedMap === id) btn.classList.add("selected");
   btn.innerHTML = `${title}<span class="map-meta">${meta}</span>`;
   btn.addEventListener("click", () => selectMap(id));
   return btn;
-}
-
-function selectMap(id) {
-  selectedMap = id;
-  document.getElementById("next-from-map").disabled = false;
-  renderMaps();
 }
 
 function updateMapDetail() {
@@ -123,14 +146,16 @@ function nudgeDeploy(delta) {
 
 function resetWizard() {
   playerCount = 0;
+  playMode = "ffa";
   selectedMap = null;
   deploy = 5;
-  document.querySelectorAll(".tile[data-n]").forEach((btn) => btn.classList.remove("selected"));
+  document.querySelectorAll("#tree-players .tree-node").forEach((btn) => btn.classList.remove("selected"));
   document.getElementById("player-info").classList.add("hidden");
   document.getElementById("player-info").innerHTML = "";
-  document.getElementById("next-from-players").disabled = true;
-  document.getElementById("next-from-map").disabled = true;
-  document.getElementById("map-list").innerHTML = "";
+  document.getElementById("next-from-tree").disabled = true;
+  document.getElementById("tree-maps").innerHTML = "";
+  document.getElementById("tree-mode-wrap").classList.add("hidden");
+  document.getElementById("tree-maps-wrap").classList.add("hidden");
   document.getElementById("map-detail").classList.add("hidden");
   document.querySelectorAll(".checklist li").forEach((li) => li.classList.remove("done"));
   updateChecklistProgress();
@@ -140,18 +165,14 @@ function resetWizard() {
   showStep(0);
 }
 
-onLangChange(() => {
-  if (playerCount) {
-    document.getElementById("player-info").innerHTML = t(`players.info.${playerCount}`);
-    renderMaps();
-  }
-});
+onLangChange(renderTree);
 
 if (location.hash === "#rules") showStep(STEPS.indexOf("rules"));
 
 window.next = next;
 window.prev = prev;
 window.selectPlayers = selectPlayers;
+window.selectMode = selectMode;
 window.toggleCheck = toggleCheck;
 window.toggleRule = toggleRule;
 window.resetWizard = resetWizard;

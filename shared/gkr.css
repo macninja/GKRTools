@@ -479,6 +479,90 @@ a.ghost {
   font-style: normal;
 }
 
+.tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem 0 1rem;
+}
+
+.tree-join {
+  width: 2px;
+  height: 0.85rem;
+  background: var(--orange);
+}
+
+.tree-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  position: relative;
+}
+
+.tree-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 18%;
+  right: 18%;
+  height: 2px;
+  background: var(--orange);
+}
+
+.tree-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.tree-node {
+  position: relative;
+  z-index: 1;
+  min-width: 3.2rem;
+  padding: 0.4rem 0.7rem 0.3rem;
+  font-family: var(--font-ui);
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: var(--panel-inner);
+  border: 2px solid var(--ink);
+}
+
+.tree-root {
+  background: var(--ink);
+  color: var(--cyan);
+  box-shadow: inset 0 0 0 1px var(--yellow);
+}
+
+.tree-node.selected {
+  background: var(--orange);
+  color: #fff;
+}
+
+.tree-leaf {
+  width: 100%;
+  text-align: left;
+}
+
+.tree-leaf .map-meta {
+  display: block;
+  margin-top: 0.1rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.tree-leaf.selected .map-meta {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .player-grid {
   display: flex;
   gap: 0.55rem;

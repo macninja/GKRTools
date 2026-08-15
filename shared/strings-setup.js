@@ -9,6 +9,15 @@ export const SETUP_STRINGS = {
     "welcome.lede":
       "Denne guide hjælper jer med battlefield, faction-dæk og genopfrisker de regler I faktisk glemmer midt i kampen.",
     "welcome.start": "Start setup →",
+    "tree.title": "Vælg jeres vej",
+    "tree.lede": "Tryk jer ned gennem træet – spillere, variant, battlefield.",
+    "tree.root": "Spillere",
+    "tree.back": "← Tilbage",
+    "tree.next": "Videre →",
+    "tree.mode.ffa": "FFA",
+    "tree.mode.tvt": "2v2",
+    "tree.info.4tvt":
+      "2v2: allierede sidder diagonalt, hold skiftes. Ingen ild på allierede; repair er ok. Holdet vinder ved 1 frag eller 6 demolitions (4 tags fra holdet tæller).",
     "players.title": "Antal spillere",
     "players.lede": "Hvor mange sidder ved bordet i aften?",
     "players.back": "← Tilbage",
@@ -18,7 +27,7 @@ export const SETUP_STRINGS = {
     "players.info.3":
       "3 spillere: maps Three Walls eller Citadel. Start-hexes 1D, 5K og 8C.",
     "players.info.4":
-      "4 spillere: maps Showdown, Crackshot Alley eller Salvage City. Start-hexes 1B, 1J, 9B, 9J. 2v2: allierede sidder diagonalt, holdet vinder ved 1 frag eller 6 demolitions samlet.",
+      "4 spillere FFA: maps Showdown, Crackshot Alley eller Salvage City. Start-hexes 1B, 1J, 9B, 9J. Standard Frag eller Tag.",
     "map.title": "Battlefield",
     "map.lede": "Vælg et officielt kort – koordinaterne står på brættet.",
     "map.custom": "Eget layout",
@@ -188,6 +197,15 @@ export const SETUP_STRINGS = {
     "welcome.lede":
       "This guide walks you through the battlefield, faction decks, and the rules you actually forget mid-fight.",
     "welcome.start": "Start setup →",
+    "tree.title": "Pick your path",
+    "tree.lede": "Tap down the tree – players, variant, battlefield.",
+    "tree.root": "Players",
+    "tree.back": "← Back",
+    "tree.next": "Continue →",
+    "tree.mode.ffa": "FFA",
+    "tree.mode.tvt": "2v2",
+    "tree.info.4tvt":
+      "2v2: allies sit diagonally, turns alternate teams. No fire on allies; repair is fine. The team wins on 1 frag or 6 demolitions (4 tags from the team count).",
     "players.title": "Number of players",
     "players.lede": "How many are at the table tonight?",
     "players.back": "← Back",
@@ -197,7 +215,7 @@ export const SETUP_STRINGS = {
     "players.info.3":
       "3 players: Three Walls or Citadel. Starting hexes 1D, 5K, and 8C.",
     "players.info.4":
-      "4 players: Showdown, Crackshot Alley, or Salvage City. Starting hexes 1B, 1J, 9B, 9J. 2v2: allies sit on opposite corners; the team wins on 1 frag or 6 demolitions combined.",
+      "4 players FFA: Showdown, Crackshot Alley, or Salvage City. Starting hexes 1B, 1J, 9B, 9J. Standard Frag or Tag.",
     "map.title": "Battlefield",
     "map.lede": "Pick an official map – the coordinates are printed on the board.",
     "map.custom": "Custom layout",
